@@ -76,10 +76,10 @@ int addEdgewithWeightAG(ArrayGraph* pGraph, int fromVertexID, int toVertexID, in
 	if (!checkVertexValid(pGraph, fromVertexID) ||
 	!checkVertexValid(pGraph, toVertexID))
 		return (FALSE);
-	if (!pGraph->ppAdjEdge[fromVertexID][toVertexID])
+	if (pGraph->ppAdjEdge[fromVertexID][toVertexID])
 		return (FALSE);
 	pGraph->ppAdjEdge[fromVertexID][toVertexID] = weight;
-	if (pGraph->graphType = GRAPH_UNDIRECTED)
+	if (pGraph->graphType == GRAPH_UNDIRECTED)
 		pGraph->ppAdjEdge[toVertexID][fromVertexID] = weight;
 	return(TRUE);
 }
@@ -114,7 +114,7 @@ int removeEdgeAG(ArrayGraph* pGraph, int fromVertexID, int toVertexID)
 	!checkVertexValid(pGraph, toVertexID))
 		return (FALSE);
 	pGraph->ppAdjEdge[fromVertexID][toVertexID] = NOT_USED;
-	if (pGraph->graphType = GRAPH_UNDIRECTED)
+	if (pGraph->graphType == GRAPH_UNDIRECTED)
 		pGraph->ppAdjEdge[toVertexID][fromVertexID] = NOT_USED;
 	return (TRUE);
 }
